@@ -1,5 +1,5 @@
 #  project name:
-INSTAGAM-CLONE myinsta app
+LETS_SHARE 
 
 
 # AUTHOR
@@ -7,21 +7,23 @@ EDWIKE NYAUNCHO
 
 
 ## Project description
-This is a website created to clone popular photo app Instagram.
+The application will allow a user to post a project he/she has created and get it reviewed by his/her peers.
 
 
 ## USER STORY
 -The user is able to sign in to the application to start using
 
--User is able to upload pictures to the application
+-User is able to view posted projects and their details
 
--User can be able to see my profile with all pictures
+-User can be able to post a project to be reviewed or rated
 
--can also like a picture
+-User is able to rate/review other users prjects
 
--User is able to leave comment
+-User is able to search for projects
 
--User is able to follow other users and see their pictures
+-User is able to view projects overall score
+
+-User is able to view profile page
 
 
 ## Setup Instructions and Installation
@@ -38,7 +40,7 @@ For the application to run, you have to install:
 Setup and Installation
 - open terminal
 
-- git clone this repository https://github.com/Edwike12/Instagram-clone
+- git clone this repository https://github.com/Edwike12/Lets_share
 
 - use a code editor
 
@@ -54,13 +56,13 @@ Setup and Installation
 
         -psql
 
-        -CREATE DATABASE instagram;
+        -CREATE DATABASE share;
 
 - .env file- create  .env file and hve the following filling where appropriate:
 
             -SECRET_KEY = '<Secret_key>'
 
-            -DBNAME = 'instagram'
+            -DBNAME = 'share'
 
             -USER = '<Username>'
 
@@ -70,7 +72,7 @@ Setup and Installation
 
 - Run initial migration
 
-        -$ python3.8 manage.py makemigrations myinsta
+        -$ python3.8 manage.py makemigrations share
 
         -$ python3.8 manage.py migrate
 
