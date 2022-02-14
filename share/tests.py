@@ -43,7 +43,7 @@ class ProfileTestClass(TestCase):
 class ProjectTestClass(TestCase):
     def setUp(self):
         user = User.objects.create(
-            username="test_user",
+            username="test_user"
         )
 
         self.project = Project(
@@ -72,3 +72,17 @@ class ProjectTestClass(TestCase):
         self.project.delete_project()
         projects = Project.objects.all()
         self.assertTrue(len(projects) == 0)
+
+class RatingTestClass(TestCase):
+    def setUp(self):
+        user = User.objects.create(
+            username="test_user"
+        )
+
+        self.rating = Rating(
+            user=user,
+        )
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.rating, Rating))
+
