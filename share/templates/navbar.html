@@ -1,12 +1,12 @@
 <style>
-    .navbar{
-       margin-bottom: 5%; 
+    .navbar {
+        margin-bottom: 5%;
     }
 </style>
 
 
 
-<nav class="navbar navbar-expand-lg fixed-top bg-info"  style=" color: white;">
+<nav class="navbar navbar-expand-lg fixed-top bg-info" style=" color: white;">
     <a class="navbar-brand" href="/" style=" color: white;">Lets_share</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,71 +18,65 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/" style=" color: white;">Home <span class="sr-only">(current)</span></a>
             </li>
-           
+
             <li class="nav-item ">
                 <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false" style=" color: white;">
                     Location
                 </a>
-               
+
             </li>
 
 
         </ul>
         {% if user.is_authenticated %}
 
-            <li class="dropdown btn btn-default">
-                <a href="#" class="dropdown-toggle btn btn-info" data-toggle="dropdown"
-                    ><i class="far fa-user text-white"></i>
-        
-                </a>
-                <ul class="dropdown-menu" role="menu" style=" text-decoration: none;">
-        
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin" class="btn-info"
-                            >Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile" class='btn btn-info btn-info'
-                            >Profile</a>
-                    </li>
-                    <br>
-                    <li>
-                        <a class='btn btn-default btn-info' href="/accounts/register">Register</a>
-                    </li>
-                    <br>
-                    <li>
-        
-                        <a class='btn btn-default btn-info' href="/admin/password_change" >Change
-                            Password</a>
-                    </li>
-                    <br>
-                    <li>
-                        <a class='btn btn-default btn-info' href="/logout" >Log Out</a>
-                    </li>
-                </ul>
-            </li>
-        
-            {% else %}
-            <li>
-                <a class='btn btn-default' href="accounts/login" style="font-weight: 700;">Login</a>
-            </li>
-            {% endif %}
+        <li class="dropdown btn btn-default">
+            <a href="#" class="dropdown-toggle btn btn-info" data-toggle="dropdown"><i
+                    class="far fa-user text-white"></i>
+
+            </a>
+            <ul class="dropdown-menu" role="menu" style=" text-decoration: none;">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin" class="btn-info">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile" class='btn btn-info btn-info'>Profile</a>
+                </li>
+                <br>
+                <li>
+                    <a class='btn btn-default btn-info' href="/accounts/register">Register</a>
+                </li>
+                <br>
+                <li>
+
+                    <a class='btn btn-default btn-info' href="/admin/password_change">Change
+                        Password</a>
+                </li>
+                <br>
+                <li>
+                    <a class='btn btn-default btn-info' href="/logout">Log Out</a>
+                </li>
+            </ul>
+        </li>
+
+        {% else %}
+        <li>
+            <a class='btn btn-default' href="accounts/login" style="font-weight: 700;">Login</a>
+        </li>
+        {% endif %}
         <div class="col-sm-4 col-md-4 navbar-right">
 
-            <form class="navbar-form" role="search" action="{% url 'search_project' %}">
-
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Project by name" name="images">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="fa fa-search text-white"
-                                aria-hidden="true"></i>
-                        </button>
-
+            <div class="forms">
+                <form class=" form" role="search" action="{% url 'search.post' %}">
+                    <div class="input-group "> <input type="text" class="form-control" placeholder="Search photos"
+                            name="search" style="height: 30px; width: 200px;">
+                        <div class="input-group-btn"> <button class="btn btn-default" type="submit"><i
+                                    class="fa fa-search" aria-hidden="true"></i></button> </div>
                     </div>
-                </div>
-
-            </form>
+                </form>
+            </div>
         </div>
         <!-- search form end -->
     </div>
