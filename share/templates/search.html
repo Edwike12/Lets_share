@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<br><br><br>
+<style>
+    body{
+        font-family: 'Lato', global_font_string;
+        font-weight: 500;
+        background-color: #595d64;
+        color: whitesmoke;
+       
+    }
+    .card{
+        color: #595d64;
+    }
+</style>
+<div class="container">
+
+<div class="row text-center">
+
+<h1>These are the results of your search "{{ found }}"</h1>
+</div>
+
+   
+    <div class="row">
+        {% for project in projects %}
+        <div class="card" style="width: 25rem;height: fit-content;margin: 10px;padding: 5px;">
+            <img src="{{ project.image.url }}" class="card-img-top" alt="..." style="object-fit: cover;height: 260px;">
+        <div class="card-body">
+          <h5 class="card-title">{{ project.title }}</h5>
+          <h5 class="card-title">{{ project.category }}</h5>
+          <p class="card-text">
+            <a href="{{project.url}}" class="btn btn-outline-info bg-info text-white rounded-pill">View Project</a>
+          </p>
+        </div>
+    </div>
+        {% endfor %}
+      </div>
+
+  </div>
+
+{% endblock %}
