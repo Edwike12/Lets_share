@@ -18,7 +18,7 @@ def index(request):
 
     return render(request, 'index.html', {'projects':projects})
 
-@login_required(login_url="/accounts/login/")
+@login_required()
 def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
@@ -55,17 +55,15 @@ def add_project(request):
     return render (request, 'add_project.html', {'form':form, 'projects':projects})
 
 @login_required(login_url='/accounts/login/')
-def search_project(request):
-    if 'search' in request.GET and request.GET['search']:
-        search_term = request.GET.get('search').lower()
-        projects = Project.search_project_name(search_term)
+def search_project(request):    
+    if 'search' in request.GET and request.GET['search']:        
+        search_term = request.GET.get('search').lower()        
+        images = Project.search_project_name(search_term)        
         message = f'{search_term}'
-
-        return render(request, 'search.html', {'found': message, 'projects': projects})
-    else:
-        message = 'Not found'
-        return render(request, 'search.html', {'danger': message})
-
+        return render(request, 'search.html', {'found': message, 'images': images})    
+    else:        message = 'Not found'        
+    return render(request, 'search.html', {'danger': message})
+    
 @login_required(login_url='/accounts/login/')
 def project_details(request, project_id):
     project = Project.objects.get(id=project_id)
