@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+<br> <br> <br>
+<div class="container">
+    <div class="row">
+        {% for pros in projects %}
+        <div class="col-md-6">
+
+            <div class="card-group">
+                <div class="card">
+                    <p>{{user.username}}</p>
+
+                    
+                    <a href="{% url 'project_details' pros.id %}">
+                        <img src="{{ pros.image.url }}" class="card-img-top" alt="" style="min-width: 300px; min-height: 300px;">
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title">Title: {{pros.title}}</h5>
+                        <p class="card-text">Location: {{pros.location}}</p>
+
+
+                    </div>
+                    <div class="row card-footer">
+                        <div class="col-md-6">
+                            <a href="{{pros.url}}" class="btn btn-outline-info bg-info text-white rounded-pill">View
+                                Project</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{% url 'project_details' pros.id %}"><button class="btn btn-outline-info bg-info text-white rounded-pill">Rate Project</button></a>
+    
+                        </div>
+
+                        <div class="card-footer">
+                            <small class="text-muted">Date: {{pros.date|date}}</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <a href="{% url 'add_project' %}"><button class="btn btn-outline-info bg-info text-white rounded-pill">Add Project</button></a>
+    </div>
+</div>
+
+{% endblock %}
