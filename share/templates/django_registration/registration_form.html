@@ -37,11 +37,11 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="form-group">
-              <input type="submit" class="btn bg-dark text-white" value="Create Account">
+              <input type="submit" class="btn bg-info text-white" value="Create Account">
             </div>
             <input type="hidden" name="next" value="{{next}}">
           </form>
-          <p class="">Already Have an Account, <a href="/accounts/login/" class="text-primary"><button class="bg-dark text-white">Log In</button></a></p>
+          <p class="">Already Have an Account, <a href="/accounts/login/" class="text-primary"><button class="bg-info text-white">Log In</button></a></p>
         </div>
       </div>
 

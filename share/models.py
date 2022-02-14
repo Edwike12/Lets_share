@@ -36,11 +36,11 @@ class Project(models.Model):
     url = models.URLField(null=True)
 
     
-    @classmethod
-    def search_project_name(cls, search_term):
-        projects = cls.objects.filter(
-        title__icontains=search_term)
-        return projects    
+    @classmethod    
+    def search_project_name(cls, search_term):        
+        images = cls.objects.filter(        
+        title__icontains=search_term)       
+        return images   
 
     def str(self):
         return self.user.username
