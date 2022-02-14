@@ -88,9 +88,11 @@ Setup and Installation
 
 - Html, Css and Bootstrap
 
-- postgres sql
+- postgreSql
 
 - Heroku
+
+- Restframework
 
 
 ## Known Bugs
