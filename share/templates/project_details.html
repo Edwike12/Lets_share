@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block content %}
+{% if project.image %}
+
+<style>
+    .aimg {
+        width: 10%;
+        height: auto;
+    }
+
+    body{
+        font-family: 'Lato', global_font_string;
+        font-weight: 500;
+        background-color: black;
+        color: whitesmoke;
+       
+    }
+    .project{
+        margin-top: 5%;
+    }
+    .rating{
+        margin-top: 5%;
+    }
+    h2{
+        text-align: center;
+    }
+</style>
+<div class="container-fluid project">
+    
+    <div class="header">
+                    <h2 class="text-center">{{ project.title }}</h2>
+    </div>
+    <section class="single-top-header"
+        style="height: 75vh; margin-bottom: 5%; background-repeat: no-repeat;background-size: cover;background-position: center; background-image: url({{project.image.url}})">
+
+        {% else %}
+        <section class="single-top-header">
+            {% endif %}
+
+        </section>
+        
+    </section>
+    <div class="row">
+        <div class="col-md-4">
+        <p> {% if pofile.profile_photo %}
+            <img src="{{ profile.profile_photo }}" alt="author" class="aimg mt-3">
+            {% else %}
+            <img src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png"
+                alt="{{ user.username }}" class="aimg">
+            {% endif %} 
+            <p><b>{{ user.username }}</b></p>
+
+        </p>
+
+        </div>
+            <div class="col-md-8">
+                        <p>Description: {{ project.description|safe }}</p>
+                        <p>Category: {{ project.category|safe }}</p>
+                        <p>Location: {{ project.location|safe }}</p>
+                        <a href="{{project.url}}" class="btn btn-outline-info bg-info text-white rounded-pill">View
+                            Project</a>
+    
+                        <p>Date: {{ project.date|date }}</p>
+            </div>
+
+    </div>
+    <div class="row rating">
+        <div class="col-md-6">
+            <form action="{% url 'rate' project.id %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="Design">Design</label>
+                    <input type="number" class="form-control" name="design" min="0" max="10" value="0">
+                </div>
+                <div class="mb-3">
+                    <label for="Content">Content</label>
+                    <input type="number" class="form-control" name="content" min="0" max="10" value="0">
+                </div>
+                <div class="mb-3">
+                    <label for="Usability">Usability</label>
+                    <input type="number" class="form-control" name="usability" min="0" max="10" value="0">
+                </div>
+                <button class="btn btn-outline-info bg-info text-white rounded-pill" type="submit">Rate</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center">
+                <b>Project Ratings</b></h2>
+       
+           <p>
+               {% for rate in rating %}
+           
+               <div class="row text-center">
+                   <div class="col-md-2">
+                       <p>{{user.username}}</p>
+                   </div>
+                   <div class="col-md-3">
+                       <p>Design: {{rate.design_rate}}</p>
+                   </div>
+                   <div class="col-md-3">
+                       <p>Content: {{rate.content_rate}}</p>
+                   </div>
+                   <div class="col-md-2">
+                       <p>Usability:{{rate.usability_rate}}</p>
+                   </div>
+                   <div class="col-md-2">
+                    <p>Avarage:{{rate.avarage_rate}}</p>
+                   </div>
+               </div>
+               {% empty %}
+               <p class="alert alert-danger" role="alert">No ratings yet!</p>
+               {% endfor %}
+       
+           </p>
+       </div>
+    </div>
+    
+</div>
+
+
+{% endblock %}
